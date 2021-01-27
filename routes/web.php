@@ -17,6 +17,7 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 Route::get('/contatti', 'HomeController@contatti')->name('contatti');
+Route::get('/posts', 'PostController@index')->name('posts.index');
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 
