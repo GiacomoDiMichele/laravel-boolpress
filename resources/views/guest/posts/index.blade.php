@@ -6,9 +6,10 @@
                 <h1>Tutti i post</h1>
                 <ul>
                     @foreach ($posts as $post)
-                        <li>{{ $post->id }}</li>
-                        <li>{{ $post->description }}</li>
-                        <li>{{ $post->publication_date }}</li>
+                        <li>
+                            <span>{{ $post->id }}</span>
+                            <a href="{{ route('posts.show', ['post' => $post->id]) }}">{{ $post->title }}</a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

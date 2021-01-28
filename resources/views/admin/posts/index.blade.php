@@ -19,7 +19,7 @@
                             <td>{{ $post->id }}</td>
                             <td>{{ $post->description }}</td>
                             <td>{{ $post->publication_date }}</td>
-                            <td><a class="btn btn-info" href="#">Visualizza</a></td>
+                            <td><a class="btn btn-info" href="{{ route('posts.show', ['post' => $post->id]) }}">Visualizza</a></td>
                         </tr>
                     @endforeach
                 </tbody>
