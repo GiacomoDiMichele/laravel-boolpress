@@ -19,6 +19,7 @@ Auth::routes();
 Route::get('/contatti', 'HomeController@contatti')->name('contatti');
 Route::get('/posts', 'PostController@index')->name('posts.index');
 Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+Route::get('/categories/{category}', 'CategoryController@show')->name('categories.show');
 
 Route::middleware('auth')->namespace('Admin')->prefix('admin')->name('admin.')->group(function() {
 
