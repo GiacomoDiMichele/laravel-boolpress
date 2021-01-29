@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
+use App\Category;
 
 class PostController extends Controller
 {
@@ -28,7 +29,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'categories' => Category::all()
+        ];
+        return view('admin.posts.create', $data);
     }
 
     /**
@@ -39,7 +43,11 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+        $new_post = new Post();
+        $new_post->fill($form_data);
+        $new_post->save();
+        return redirect()->route('admin.posts.index');
     }
 
     /**
