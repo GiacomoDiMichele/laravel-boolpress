@@ -8,6 +8,7 @@
             <div class="post-description">
                 <h1>{{ $post->title }}</h1>
                 <p>{{ $post->description }}</p>
+                <p>Categories: {{ $post->category ? $post->category->name : '-' }}</p>
             </div>
         </div>
     </div>
