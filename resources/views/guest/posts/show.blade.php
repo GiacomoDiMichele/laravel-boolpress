@@ -8,7 +8,16 @@
             <div class="post-description">
                 <h1>{{ $post->title }}</h1>
                 <p>{{ $post->description }}</p>
-                <p>Categories: {{ $post->category ? $post->category->name : '-' }}</p>
+                <p>Categories:
+                    @if ($post->category)
+                        <a href="{{ route('categories.show', ['category' => $post->category->id]) }}">
+                            {{ $post->category->name }}
+                        </a>
+                    @else
+                        -
+                    @endif
+
+                </p>
             </div>
         </div>
     </div>
