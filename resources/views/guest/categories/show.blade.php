@@ -6,7 +6,14 @@
 
             </div>
             <div class="category-description">
-                <h1>{{ $category->name }}</h1>
+                <h1>Categoria: {{ $category->name }}</h1>
+                <ul>
+                    @foreach ($category->posts as $post)
+                        <a class="block" href="{{ route('posts.show', ['post' => $post->id]) }}">
+                            - {{ $post->title }}
+                        </a>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>
