@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <label for="inputDateTime" class="sr-only">Data</label>
-                    <input type="datetime-local" name="publication_date" id="inputDateTime" class="form-control" placeholder="Data" required>
+                    <input type="datetime-local" name="publication_date" id="inputDateTime" class="form-control" placeholder="Data" value="{{ old('publication_date') }}" required>
                 </div>
                 <div class="form-group">
                     <label>Categoria</label>
@@ -43,6 +43,18 @@
                             </option>
                         @endforeach
                     </select>
+                </div>
+                <div class="form-group">
+                    <p>Lista tag:</p>
+                    @foreach ($tags as $tag)
+                        <div class="form-group">
+                            <input name="tags[]" class="" type="checkbox" value="{{ $tag->id }}"
+                            {{ in_array($tag->id, old('tags', [])) ? 'checked=checked' : '' }}>
+                            <label class="form-check-label">
+                                {{ $tag->name }}
+                            </label>
+                        </div>
+                    @endforeach
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
