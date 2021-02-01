@@ -23,11 +23,11 @@
                 @csrf
                 <div class="form-group">
                     <label>Titolo</label>
-                    <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo" required>
+                    <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo" value=" {{ old('title') }}" maxlength="255" required>
                 </div>
                 <div class="form-group">
                     <label>Descrizione</label>
-                    <textarea name="description" class="form-control" rows="10" placeholder="Inizia a scrivere qualcosa..." required></textarea>
+                    <textarea name="description" class="form-control" rows="10" placeholder="Inizia a scrivere qualcosa..."  required>{{ old('description') }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="inputDateTime" class="sr-only">Data</label>
@@ -38,7 +38,7 @@
                     <select class="form-control" name="category_id">
                         <option value="">seleziona categoria</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}">
+                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? "selected=selected" : '' }}>
                                 {{ $category->name }}
                             </option>
                         @endforeach

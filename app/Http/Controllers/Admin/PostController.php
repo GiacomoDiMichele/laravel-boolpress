@@ -44,16 +44,16 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|unique:posts|max:255',
+            'title' => 'required|unique:posts|max:29',
             'description' => 'required',
-            'publication_date' => 'required',
-            'category_id' => 'required|exists:categories,id|nullable'
+            'publication_date' => 'required|before:today',
+            'category_id' => 'exists:categories,id|nullable'
         ]);
         $form_data = $request->all();
         $new_post = new Post();
         $new_post->fill($form_data);
         $new_post->save();
-        
+        return redirect()->route('admin.posts.index');
     }
 
     /**
