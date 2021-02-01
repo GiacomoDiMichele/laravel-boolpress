@@ -18,12 +18,10 @@
                     @endif
                 </p>
                 <div class="tags-class">
-
-                        <h1>Tags:</h1>
-                        @foreach ($post->tags as $tag)
-                            <a class="block" href="#">#{{ $tag->name }}</a>
-                        @endforeach
-                    
+                    <h1>Tags:</h1>
+                    @foreach ($post->tags as $tag)
+                        <a class="block" href="#">#{{ $tag->name }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>

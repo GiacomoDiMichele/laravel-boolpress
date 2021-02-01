@@ -10,11 +10,20 @@
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><line x1="20" y1="12" x2="4" y2="12"></line><polyline points="10 18 4 12 10 6"></polyline></svg> Tutti i posts
                 </a>
             </div>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{ route('admin.posts.store') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label>Titolo</label>
-                    <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo" maxlength="255" required>
+                    <input type="text" name="title" class="form-control" placeholder="Inserisci il titolo" required>
                 </div>
                 <div class="form-group">
                     <label>Descrizione</label>
